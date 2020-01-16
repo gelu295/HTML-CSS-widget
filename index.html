@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <div class="title">
+            PEDRO'S WEEKLY GOAL
+        </div>
+        <div class="widget">
+            <div class="widget-wrapper">
+                <div>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="216.1px" height="188.4px" viewBox="0 14 216.1 188.4" enable-background="new 0 14 216.1 188.4" xml:space="preserve">
+            <path id="path1" fill="none" stroke="#4990e2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                M 177.5, 181.4
+                c 19.4-18.4, 31.5-44.5, 31.5-73.3
+                c 0-55.8-45.2-101-101-101
+                S 7,52.2,7,108
+                c 0,28.9,12.1,54.9,31.5,73.3">
+            </path>
+            <path id="path2" fill="none" stroke="#dfe3e9" stroke-dasharray="118, 490" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                M 177.5, 181.4
+                c 19.4-18.4, 31.5-44.5, 31.5-73.3
+                c 0-55.8-45.2-101-101-101
+                S 7,52.2,7,108
+                c 0,28.9,12.1,54.9,31.5,73.3">
+            </path>
+            </svg>
+            
+            <div class="current">
+                Current
+                <div class="minutes">
+                    38m
+                </div>
+                <div class="all-minutes">
+                50m Goal
+            </div>
+            </div>
+        </div>
+        <div class="goal-area">
+            <div class="goal-text">
+                <div><strong class="goal-number">12</strong> more mins. to achieve this week's Goal.</div>
+            </div>
+            <div class="streak-boxes">
+                <div class="box1">
+                    <div class="current-streak1">4</div>
+                    <div>Current Streak</div>
+                </div>  
+                <div class="box2">
+                    <div class="current-streak2">12</div>
+                    <div>Best Streak</div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="options">
+            <div class="leaderboard">
+                LEADEARBOARD
+            </div>
+            <div class="dropdown">
+                <select class="select">
+                    <option vaule="week">Week</option>
+                    <option vaule="month">Month</option>
+                </select>                
+            </div>
+        </div>
+        <ul id="content"></ul>
+    </div>
+
+<script language="javascript" type="text/javascript" >
+
+ $('.select').on("change", function () {
+
+        let week = $(this).val() == 'Week';
+        let month = $(this).val() == 'Month';
+
+        if(month) {
+        $('#path2').css({ strokeDasharray: "373, 490" });
+        $('.current-streak1').text(7);
+        $('.current-streak2').text(44);
+        $('.minutes').text('12m');
+        $('.title').text("PEDRO'S MONTHLY GOAL");
+        $('.goal-number').text('186');
+        $('.goal-number').css({ fontWeight: 'bold'});
+
+        $(".people").replaceWith(display(monthArr));
+        $('.people:first-child').css({ backgroundColor: '#0DBF6D'});
+        $('.people:nth-child(1) .circle-wrapp div').css({ color: 'white', border: '1px solid white' });
+        $('.people:first-child .name div').css({ color: 'white' });
+        $('.icon-arrow0').css({ filter: 'invert(100%) sepia(0%) saturate(0%) hue-rotate(33deg) brightness(103%) contrast(102%)' });
+
+        
+        $('.people:last-child').css({ backgroundColor: 'white'});
+        $('.people:last-child .circle-wrapp div').css({ color: '#0DBF6D', border: '1px solid #0DBF6D' });
+        $('.people:last-child .name div').css({ color: '#606977' });
+        $('.icon-arrow3').css({ filter: 'invert(46%) sepia(100%) saturate(406%) hue-rotate(100deg) brightness(104%) contrast(90%)' });
+
+        }
+        else if (week) {
+
+        $('#path2').css({ strokeDasharray: "118, 490" });
+        $(".people").replaceWith(display(weekArr))
+        $('.current-streak1').text(4);
+        $('.title').text("PEDRO'S WEEKLY GOAL");
+        $('.current-streak2').text(12);
+        $('.minutes').text('38m');
+        $('.goal-number').text('12');
+        $('.goal-number').css({ fontWeight: 'bold'});
+        
+
+        };
+    });
+
+const weekArr = [
+    { id: 1, name: 'Walter Wynne', meters: '105m', icon: 'gps.svg'},
+    { id: 2, name: 'Annabel Ferdinand', meters: '52m', icon: 'https://visualpharm.com/assets/512/Filled%20Circle-595b40b85ba036ed117dc0f4.svg'},
+    { id: 3, name: 'Marty McFly', meters: '50m', icon: 'gps.svg'},
+    { id: 7, name: 'You!', meters: '38m', icon: 'gps.svg'}
+];
+
+const monthArr = [
+    { id: 1, name: 'You!', meters: '1230m', icon: 'gps.svg'},
+    { id: 2, name: 'Marit Bjoergen', meters: '860m', icon: 'https://visualpharm.com/assets/512/Filled%20Circle-595b40b85ba036ed117dc0f4.svg'},
+    { id: 3, name: 'Jack Sparrow', meters: '820m', icon: 'gps.svg'},
+    { id: 7, name: 'Katarzyna Kuczera', meters: '740m', icon: 'gps.svg'}
+];
+
+
+function display(arr) {
+    
+    let content = document.getElementById('content');
+    
+    arr.forEach((item, i) => {
+    let people = document.createElement('div');
+    people.innerHTML = `
+        <div class="circle-wrapp">
+            <div class="circle">
+                ${item.id}
+            </div>
+        </div>
+        <div class="name">
+            <div>${item.name}</div>
+            <div>${item.meters}</div>
+        </div>
+    <div class="arrows">
+        <object type="image/svg+xml" data="${item.icon}" class="icon-arrow${i}">
+            Arrow
+        </object>
+     </div>`;
+    people.className = 'people';
+
+        content.appendChild(people);
+
+});
+}
+display(weekArr);
+
+</script>
+</body>
+</html>
